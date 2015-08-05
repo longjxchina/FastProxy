@@ -19,7 +19,7 @@ function findProxy(proxyFile, connectUrl) {
         function(host, port, ok, statusCode, err) {
             if (ok) {
                 console.log((ok ? "成功" : "失败") + " => " + host + '\t' + port);
-            }            
+            }
         }
     );
 }

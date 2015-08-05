@@ -16,6 +16,8 @@ function saveProxy(proxyFile, callback) {
     resetFile(proxyFile);
     var completeCount = 0;
 
+    console.log(stringUtil.formatDate(new Date(), "yyyy-MM-dd hh:mm:ss") + "\t收集代理服务器开始")
+
     for (var index in urls) {
         var url = urls[index];
 
@@ -55,7 +57,7 @@ function saveProxy(proxyFile, callback) {
                 fs.appendFile(proxyFile, strProxy);
 
                 if (completeCount == urls.length) {
-                    console.log("写入代理完成");
+                    console.log(stringUtil.formatDate(new Date(), "yyyy-MM-dd hh:mm:ss") + " \t收集代理服务器完成");
 
                     if (typeof callback === "function") {
                         callback(proxyFile);
