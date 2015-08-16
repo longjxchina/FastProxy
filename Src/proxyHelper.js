@@ -1,4 +1,5 @@
 var proxyChecker = require("proxy-checker");
+var stringUtil = require("./stringUtils.js");
 
 function findProxy(proxyFile, connectUrl) {
     var url =  connectUrl;
@@ -7,7 +8,7 @@ function findProxy(proxyFile, connectUrl) {
         url = "https://mail.google.com";
     }
 
-    console.log("代理连接：" + url);
+    console.log(stringUtil.formatDate(new Date(), "yyyy-MM-dd hh:mm:ss") + "\t代理连接：" + url);
 
     proxyChecker.checkProxiesFromFile(
         // The path to the file containing proxies 
