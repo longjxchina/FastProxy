@@ -38,7 +38,7 @@ function writeProxy(proxyFile, urlObj, callback) {
     var url = urlObj.url;
     var type = urlObj.type;
 
-    http.get(url, function(response) {
+    var request = http.get(url, function(response) {
         var responseBody = "";
 
         response.setEncoding("utf8");
@@ -70,6 +70,13 @@ function writeProxy(proxyFile, urlObj, callback) {
         console.log("获取代理出错: " + url);
         doCheck(callback);
     }); // end of http.get(url, function(response) {
+
+    request.setTimeout(10000, function() {
+        completeCount++;
+
+        console.log("获取代理超时: " + url);
+        doCheck(callback);
+    });
 
     function doCheck(callback) {
         if (completeCount == urls.length) {
