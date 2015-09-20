@@ -67,15 +67,12 @@ function writeProxy(proxyFile, urlObj, callback) {
     }).on('error', function(e) {
         completeCount++;
 
-        console.log("获取代理出错: " + url);
+        console.log(stringUtil.formatDate(new Date(), "yyyy-MM-dd hh:mm:ss") + " \t获取代理出错: " + url);
         doCheck(callback);
     }); // end of http.get(url, function(response) {
 
-    request.setTimeout(10000, function() {
-        completeCount++;
-
-        console.log("获取代理超时: " + url);
-        doCheck(callback);
+    request.setTimeout(5000, function() {
+        request.abort();
     });
 
     function doCheck(callback) {
