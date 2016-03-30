@@ -18,6 +18,10 @@ function findProxy(proxyFile, connectUrl) {
         },
         // Callback function to be called after the check 
         function(host, port, ok, statusCode, err) {
+            if (err){                
+                return;
+            }
+
             if (ok) {
                 console.log((ok ? "成功" : "失败") + " => " + host + '\t' + port);
             }
